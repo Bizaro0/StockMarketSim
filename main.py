@@ -99,7 +99,7 @@ def sellStock():
                     if owned_stock['amount'] == 0:
                         del prtfo[ticker_sell]
                     
-                    break  # Exit after successful sale
+                    break 
 
             except ValueError:
                 print("Please enter a valid number of shares.")
@@ -122,13 +122,12 @@ def showTransactions():
                         print(f"Skipping empty entry at transaction {i}")
                         continue
                     
-                    # Ensure the entry is a dictionary (in case something is malformed)
                     if isinstance(entry, dict):
-                        # Check if the entry has ticker as the key or as part of the data
-                        if 'ticker' in entry:  # This is the second format (ticker as part of the dictionary)
+                      
+                        if 'ticker' in entry: 
                             data = entry
                             ticker = data['ticker']
-                        elif len(entry) == 1:  # This is the first format (ticker as the key)
+                        elif len(entry) == 1:
                             ticker, data = list(entry.items())[0]
                         else:
                             print(f"Skipping invalid data for transaction {i}")
@@ -137,7 +136,7 @@ def showTransactions():
                         print(f"Skipping invalid data for transaction {i}")
                         continue
                     
-                    # Ensure 'data' is a dictionary and contains the necessary keys
+               
                     if isinstance(data, dict) and 'ticker' in data:
                         print(f"\nTransaction {i}:")
                         print(f"  Ticker        : {ticker}")
